@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>RASPI LED</title>
+		<!-- Latest compiled and minified CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+		
+		<!-- jQuery library -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+		
+		<!-- Popper JS -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+		
+		<!-- Latest compiled JavaScript -->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+	</head>
+	<body>
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-6">
+					<button id="off" class="btn btn-danger">OFF</button>
+				</div>
+				<div class="col-lg-6">
+					<button id="on" class="btn btn-success">ON</button>
+				</div>
+			</div>
+		</div>
+		
+
+		<script>
+			// FUNCTIONS IN JQUERY 
+			//ACCESS THE IDS
+			$('#off').click(function() {
+				$.post({
+					url:"http://192.168.137.211:5000/led/off",
+					dataType: 'json',
+					cache: false,
+					success: function(data) {
+						console.log(data);
+						$('#val').html = data.status;
+					}			
+				});
+			});
+			//MAKE AJAX REQUEST
+			$('#on').click(function(){
+				$.post({
+					url:"http://192.168.137.211:5000/led/on",
+					dataType: 'json',
+					cache: false,
+					success: function(data) {
+						console.log(data);
+						$('#val').html = data.status;
+					}				
+				});
+			});
+		</script>		
+	</body>	
+</html>
