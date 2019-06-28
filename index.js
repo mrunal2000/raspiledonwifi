@@ -33,7 +33,7 @@ app.post('/led/off', (req,res) => {
 		console.log('LED IS OFF, WRITTEN FALSE TO PIN');
 		var time = new Date();
 		console.log('TIMESTAMP: ','HOURS: ',time.getHours(),'MINUTES: ',time.getMinutes(),'SECONDS: ',time.getSeconds());
-		res.send({status: 'OFF'});
+		res.send({status: 'OFF', time: time});
 		return;
 	});
 } );

@@ -17,7 +17,7 @@ app.get('/', (req,res) => {
 	res.sendFile(__dirname+'/index.html');
 } );
 
-app.get('/led/on', (req,res) => {
+app.post('/led/on', (req,res) => {
 	gpio.write(PIN,true, function(err) {
 		if(err) throw err;
 		console.log('LED IS ON, WRITTEN TRUE TO PIN');
@@ -27,7 +27,7 @@ app.get('/led/on', (req,res) => {
 		return;
 	});
 } );
-app.get('/led/off', (req,res) => {
+app.post('/led/off', (req,res) => {
 	gpio.write(PIN,false, function(err) {
 		if(err) throw err;
 		console.log('LED IS OFF, WRITTEN FALSE TO PIN');

@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<title>RASPI LED</title>
+		<meta name="viewport" content="width=device-witdh, initial-scale=1.0">
+		<title>ON/OFF LED</title>
 		<!-- Latest compiled and minified CSS -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 		
@@ -24,6 +25,12 @@
 					<button id="on" class="btn btn-success">ON</button>
 				</div>
 			</div>
+			<div class="row">
+				<h1 class="display-1">LOGS</h1>
+				<ul id="list-container" class="list-group">
+					<li>Time</li>
+				</ul>
+			</div>
 		</div>
 		
 
@@ -37,7 +44,7 @@
 					cache: false,
 					success: function(data) {
 						console.log(data);
-						$('#val').html = data.status;
+						$('#list-container').append('<li class="list-group-item">'+data.status+' TIME: '+data.time+'</li>');
 					}			
 				});
 			});
@@ -49,7 +56,7 @@
 					cache: false,
 					success: function(data) {
 						console.log(data);
-						$('#val').html = data.status;
+						$('#list-container').append('<li class="list-group-item">' +data.status+" TIME: "+data.time+'</li>');
 					}				
 				});
 			});
